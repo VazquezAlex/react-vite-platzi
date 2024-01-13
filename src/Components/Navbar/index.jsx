@@ -1,7 +1,12 @@
 // Third-party imports.
 import { NavLink } from "react-router-dom";
 
+// Local imports.
+import { useShopiContext } from "../../Context";
+
 const Navbar = () => {
+
+    const { count } = useShopiContext();
 
     const activeStyle = 'underline underline-offset-4';
 
@@ -93,7 +98,7 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li>
-                    🛒
+                    🛒 { count }
                 </li>
             </ul>
         </nav>

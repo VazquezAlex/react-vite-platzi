@@ -1,8 +1,15 @@
+
+// Third-party imports.
 import PropTypes from 'prop-types';
+
+// Local imports.
+import { useShopiContext } from '../../Context';
 
 const Card = ({ data }) => {
 
     const { category, image, title, price } = data;
+
+    const { setCount } = useShopiContext();
 
     return (
         <div className = "bg-white hover:cursor-pointer w-56 h-60">
@@ -17,6 +24,7 @@ const Card = ({ data }) => {
                 />
                 <div
                     className = "absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
+                    onClick = { () => setCount(prev => prev + 1) }
                 >
                     +
                 </div>
