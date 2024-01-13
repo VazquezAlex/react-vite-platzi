@@ -1,10 +1,12 @@
+// Local imports.
+import Layout from "../../Components/Layout";
 
 const Home = () => {
 
     return (
-        <div>
-            Home
-        </div>
+        <Layout>
+            <h1>Home</h1>
+        </Layout>
     );
 }
 

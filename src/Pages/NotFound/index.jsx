@@ -1,10 +1,12 @@
+// Local imports.
+import Layout from "../../Components/Layout";
 
 const NotFound = () => {
 
     return (
-        <div>
+        <Layout>
             Not Found
-        </div>
+        </Layout>
     );
 }
 

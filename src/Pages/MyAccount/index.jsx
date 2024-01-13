@@ -1,10 +1,12 @@
+// Local imports.
+import Layout from "../../Components/Layout";
 
 const MyAccount = () => {
 
     return (
-        <div>
+        <Layout>
             My Account
-        </div>
+        </Layout>
     );
 }
 
