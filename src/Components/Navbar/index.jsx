@@ -7,7 +7,7 @@ import { useShopiContext } from "../../Context";
 
 const Navbar = () => {
 
-    const { count } = useShopiContext();
+    const { cartProducts } = useShopiContext();
 
     const activeStyle = 'underline underline-offset-4';
 
@@ -99,7 +99,7 @@ const Navbar = () => {
                     </NavLink>
                 </li>
                 <li className = "flex items-center gap-x-1">
-                    <ShoppingBagIcon className = "h-6 w-6 text-black" /> { count }
+                    <ShoppingBagIcon className = "h-6 w-6 text-black" /> { cartProducts.length }
                 </li>
             </ul>
         </nav>

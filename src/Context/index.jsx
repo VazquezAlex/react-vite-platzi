@@ -19,13 +19,18 @@ export const ShoppingCartProvider = ({ children }) => {
 
     // Product Detail - Show Product.
     const [productToShow, setProductToShow] = useState({});
+    
+    // Shopping Cart - Add Products to cart.
+    const [cartProducts, setCartProducts] = useState([]);
 
     const values = {
+        cartProducts,
         count,
         isProductDetailOpen,
         productToShow,
         closeProductDetail,
         openProductDetail,
+        setCartProducts,
         setCount,
         setProductToShow,
     }
