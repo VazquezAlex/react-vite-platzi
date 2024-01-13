@@ -1,4 +1,7 @@
 
+// Third-party imports.
+import { XMarkIcon } from '@heroicons/react/24/solid';
+
 // Local imports.
 import './styles.css';
 
@@ -10,7 +13,9 @@ const ProductDetail = () => {
         >
             <div className = 'flex justify-between items-center p-6'>
                 <h2 className = 'font-medium text-xl'>Detail</h2>
-                <div>x</div>
+                <div>
+                    <XMarkIcon className = 'h-6 w-6 text-black-600' />
+                </div>
             </div>
         </aside>
     );
