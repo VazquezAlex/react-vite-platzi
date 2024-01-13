@@ -29,12 +29,19 @@ const Card = ({ data }) => {
     );
 }
 
+
 Card.propTypes = {
-    data: PropTypes.objectOf({
-        category: PropTypes.string,
-        image: PropTypes.string,
+    data: PropTypes.shape({
+        id: PropTypes.number,
         title: PropTypes.string,
         price: PropTypes.number,
+        description: PropTypes.string,
+        category: PropTypes.string,
+        image: PropTypes.string,
+        rating: PropTypes.shape({
+            rate: PropTypes.number,
+            count: PropTypes.number,
+        })
     }),
 }
 
