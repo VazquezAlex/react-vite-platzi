@@ -10,12 +10,17 @@ const Card = ({ data }) => {
 
     const { category, image, title, price } = data;
 
-    const { setCount, openProductDetail } = useShopiContext();
+    const { setCount, openProductDetail, setProductToShow } = useShopiContext();
+
+    const showProduct = () => {
+        openProductDetail();
+        setProductToShow(data);
+    }
 
     return (
         <div 
             className = "bg-white hover:cursor-pointer w-56 h-60"
-            onClick =  { openProductDetail }
+            onClick =  { showProduct }
         >
             <figure className = 'relative mb-2 w-full h-4/5'>
                 <span className = "absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-2 py-0.5 capitalize">

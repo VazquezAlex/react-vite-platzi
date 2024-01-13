@@ -9,18 +9,25 @@ export const ShoppingCartContext = createContext();
 
 export const ShoppingCartProvider = ({ children }) => {
 
+    // Shopping Cart - Increment quantity.
     const [count, setCount] = useState(0);
-    const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
 
+    // Product Detail - Open / Close.
+    const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
     const openProductDetail = () => setIsProductDetailOpen(true);    
-    const closeProductDetail = () => setIsProductDetailOpen(false);    
+    const closeProductDetail = () => setIsProductDetailOpen(false);
+
+    // Product Detail - Show Product.
+    const [productToShow, setProductToShow] = useState({});
 
     const values = {
         count,
         isProductDetailOpen,
+        productToShow,
         closeProductDetail,
         openProductDetail,
         setCount,
+        setProductToShow,
     }
 
     return (
