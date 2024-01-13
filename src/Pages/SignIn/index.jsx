@@ -3,7 +3,7 @@ const SignIn = () => {
 
     return (
         <div>
-            Home
+            Sign In
         </div>
     );
 }

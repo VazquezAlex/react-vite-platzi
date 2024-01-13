@@ -3,7 +3,7 @@ const NotFound = () => {
 
     return (
         <div>
-            Home
+            Not Found
         </div>
     );
 }
