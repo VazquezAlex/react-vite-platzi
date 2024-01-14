@@ -13,9 +13,17 @@ const CheckoutSideMenu = () => {
         cartProducts,
         isShoppingCartOpen,
         closeShoppingCart,
+        setCartProducts,
     } = useShopiContext();
 
     if (!isShoppingCartOpen) return <></>;
+
+    const handleDelete = (id) => {
+        const filteredProducts = cartProducts.filter(product => product.id !== id);
+
+        // Update state without deleted products.
+        setCartProducts(filteredProducts);
+    }
 
     return (
         <aside 
@@ -38,6 +46,7 @@ const CheckoutSideMenu = () => {
                             title = { product.title }
                             imageUrl = { product.image }
                             price  = { product.price }
+                            handleDelete = { () => handleDelete(product.id) }
                         />
                     ))
                 }
