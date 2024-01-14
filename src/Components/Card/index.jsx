@@ -1,6 +1,6 @@
 
 // Third-party imports.
-import { PlusIcon } from '@heroicons/react/24/solid';
+import { PlusIcon, CheckIcon } from '@heroicons/react/24/solid';
 import PropTypes from 'prop-types';
 
 // Local imports.
@@ -8,9 +8,10 @@ import { useShopiContext } from '../../Context';
 
 const Card = ({ data }) => {
 
-    const { category, image, title, price } = data;
+    const { category, id, image, title, price } = data;
 
     const { 
+        cartProducts,
         closeProductDetail,
         openProductDetail, 
         openShoppingCart, 
@@ -31,6 +32,26 @@ const Card = ({ data }) => {
         openShoppingCart();
     }
 
+    const renderIcon = () => {
+
+        const isInCart = cartProducts.filter(product => product.id === id);
+
+        if (isInCart.length) return (
+            <div className = "absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1">
+                <CheckIcon className = 'h-6 w-6 text-white' />
+            </div>
+        )
+
+        return (
+            <div
+                className = "absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
+                onClick = { addProductsToCart }
+            >
+                <PlusIcon className = 'h-6 w-6 text-black' />
+            </div>
+        );
+    }
+
     return (
         <div 
             className = "bg-white hover:cursor-pointer w-56 h-60"
@@ -45,12 +66,7 @@ const Card = ({ data }) => {
                     className = "w-full h-full object-cover rounded-lg"
                     src = { image }
                 />
-                <div
-                    className = "absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
-                    onClick = { addProductsToCart }
-                >
-                    <PlusIcon className = 'h-6 w-6 text-black' />
-                </div>
+                { renderIcon() }
             </figure>
             <p className = 'flex justify-between items-center'>
                 <span className = "text-sm font-light truncate">{ title }</span>
