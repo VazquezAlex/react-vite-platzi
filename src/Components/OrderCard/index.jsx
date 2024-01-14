@@ -7,6 +7,20 @@ const OrderCard = (props) => {
 
     const { title, imageUrl, price, handleDelete } = props;
 
+    const renderDeleteButton = () => {
+        if (!handleDelete) return <></>;
+
+        return (
+            <div className = 'flex items-center gap-2'>
+                <p className = 'text-lg font-medium'>${ price }</p>
+                <XMarkIcon 
+                    className = 'h-6 w-6 text-black cursor-pointer hover:opacity-55'
+                    onClick = { handleDelete }
+                />
+            </div>
+        )
+    }
+
     return (
         <div className = 'flex justify-between items-center'>
             <div className = 'flex items-center gap-2'>
@@ -19,13 +33,7 @@ const OrderCard = (props) => {
                 </figure>
                 <p className = 'text-sm font-light'>{ title }</p>
             </div>
-            <div className = 'flex items-center gap-2'>
-                <p className = 'text-lg font-medium'>${ price }</p>
-                <XMarkIcon 
-                    className = 'h-6 w-6 text-black cursor-pointer hover:opacity-55'
-                    onClick = { handleDelete }
-                />
-            </div>
+            { renderDeleteButton() }
         </div>
     );
 }

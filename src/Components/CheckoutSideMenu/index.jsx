@@ -1,5 +1,6 @@
 
 // Third-party imports.
+import { Link } from 'react-router-dom';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 
 // Local imports.
@@ -68,12 +69,14 @@ const CheckoutSideMenu = () => {
                     <span className = 'font-light'>Total: </span>
                     <span className = 'font-medium text-xl'>${ cartTotal }</span>
                 </p>
-                <button
-                    className = 'bg-black text-white w-full py-3 rounded-lg'
-                    onClick = { () => handleCheckout() }
-                >
-                    Checkout
-                </button>
+                <Link to = '/my-orders/last'>
+                    <button
+                        className = 'bg-black text-white w-full py-3 rounded-lg'
+                        onClick = { () => handleCheckout() }
+                    >
+                        Checkout
+                    </button>
+                </Link>
             </div>
         </aside>
     );
