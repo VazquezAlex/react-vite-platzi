@@ -15,15 +15,26 @@ const CheckoutSideMenu = () => {
         isShoppingCartOpen,
         closeShoppingCart,
         setCartProducts,
+        setOrders,
     } = useShopiContext();
 
     if (!isShoppingCartOpen) return <></>;
 
     const handleDelete = (id) => {
         const filteredProducts = cartProducts.filter(product => product.id !== id);
-
         // Update state without deleted products.
         setCartProducts(filteredProducts);
+    }
+
+    const handleCheckout = () => {
+        const orderToAdd = {
+            date: new Date().toISOString(),
+            products: cartProducts,
+            totalProducts: cartProducts.length,
+            totalPrice: cartTotal,
+        }
+        setOrders(prev => [...prev, orderToAdd]);
+        setCartProducts([]);
     }
 
     return (
@@ -39,7 +50,7 @@ const CheckoutSideMenu = () => {
                     <XMarkIcon className = 'h-6 w-6 text-black-600' />
                 </div>
             </div>
-            <div className = 'px-6 flex flex-col gap-y-2 overflow-y-scroll'>
+            <div className = 'px-6 flex flex-col gap-y-2 overflow-y-scroll flex-1'>
                 {
                     cartProducts?.map(product => (
                         <OrderCard 
@@ -52,11 +63,17 @@ const CheckoutSideMenu = () => {
                     ))
                 }
             </div>
-            <div className = 'px-6 mt-2'>
-                <p className = 'flex justify-between items-center'>
+            <div className = 'px-6 mt-2 mb-6'>
+                <p className = 'flex justify-between items-center mb-2'>
                     <span className = 'font-light'>Total: </span>
                     <span className = 'font-medium text-xl'>${ cartTotal }</span>
                 </p>
+                <button
+                    className = 'bg-black text-white w-full py-3 rounded-lg'
+                    onClick = { () => handleCheckout() }
+                >
+                    Checkout
+                </button>
             </div>
         </aside>
     );
