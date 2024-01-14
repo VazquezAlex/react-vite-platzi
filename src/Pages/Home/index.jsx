@@ -1,30 +1,13 @@
-// Core imports.
-import { useEffect, useState } from "react";
 
 // Local imports.
 import Card from "../../Components/Card";
 import Layout from "../../Components/Layout";
 import ProductDetail from "../../Components/ProductDetail";
-import { apiUrl } from "../../api";
+import { useShopiContext } from "../../Context";
 
 const Home = () => {
 
-    const [items, setItems] = useState([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await fetch(apiUrl);
-                const data = await res.json();
-    
-                setItems(data);
-            } catch (e) {
-                console.error(e);
-            }
-        }
-
-        fetchData();
-    }, []);
+    const { items } = useShopiContext();
 
     return (
         <Layout>

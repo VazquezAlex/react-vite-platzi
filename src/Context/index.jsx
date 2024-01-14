@@ -4,6 +4,9 @@ import { createContext, useContext, useEffect, useState } from 'react';
 // Third-party imports.
 import PropTypes from 'prop-types';
 
+// Local imports.
+import { apiUrl } from '../api';
+
 // Create the context.
 export const ShoppingCartContext = createContext();
 
@@ -38,12 +41,29 @@ export const ShoppingCartProvider = ({ children }) => {
     const openShoppingCart = () => setIsShoppingCartOpen(true);    
     const closeShoppingCart = () => setIsShoppingCartOpen(false);
 
+    // Get Products
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await fetch(apiUrl);
+                const data = await res.json();
+                setItems(data);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+        fetchData();
+    }, []);
+
     const values = {
         cartProducts,
         cartTotal,
         count,
         isProductDetailOpen,
         isShoppingCartOpen,
+        items,
         orders,
         productToShow,
         closeProductDetail,
@@ -52,6 +72,7 @@ export const ShoppingCartProvider = ({ children }) => {
         openShoppingCart,
         setCartProducts,
         setCount,
+        setItems,
         setOrders,
         setProductToShow,
     }
