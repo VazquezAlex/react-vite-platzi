@@ -11,6 +11,7 @@ const CheckoutSideMenu = () => {
 
     const { 
         cartProducts,
+        cartTotal,
         isShoppingCartOpen,
         closeShoppingCart,
         setCartProducts,
@@ -50,6 +51,12 @@ const CheckoutSideMenu = () => {
                         />
                     ))
                 }
+            </div>
+            <div className = 'px-6 mt-2'>
+                <p className = 'flex justify-between items-center'>
+                    <span className = 'font-light'>Total: </span>
+                    <span className = 'font-medium text-xl'>${ cartTotal }</span>
+                </p>
             </div>
         </aside>
     );

@@ -1,5 +1,5 @@
 // Core imports.
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 // Third-party imports.
 import PropTypes from 'prop-types';
@@ -22,6 +22,13 @@ export const ShoppingCartProvider = ({ children }) => {
     
     // Shopping Cart - Add Products to cart.
     const [cartProducts, setCartProducts] = useState([]);
+    const [cartTotal, setCartTotal] = useState([]);
+
+    // Shopping Cart - Calculate Total.
+    useEffect(() => {
+        const total = cartProducts.reduce((sum, product) => sum + product.price, 0);
+        setCartTotal(total);
+    }, [cartProducts]);
 
     // Checkout Side Menu - Open / Close.
     const [isShoppingCartOpen, setIsShoppingCartOpen] = useState(false);
@@ -30,6 +37,7 @@ export const ShoppingCartProvider = ({ children }) => {
 
     const values = {
         cartProducts,
+        cartTotal,
         count,
         isProductDetailOpen,
         isShoppingCartOpen,
