@@ -14,13 +14,13 @@ const MyOrders = () => {
 
     return (
         <Layout>
-            <div className = "flex items-center justify-center w-80 relative">
+            <div className = "flex items-center justify-center w-80 mb-3">
                 <h1>My Orders</h1>
             </div>
             <div>
                 {
                     orders.map((order, idx) => (
-                        <Link to = { `/my-orders/${ order.id }` } key = { idx }>
+                        <Link to = { `/my-orders/${ idx }` } key = { idx }>
                             <OrdersCard 
                                 totalPrice = { order.totalPrice }
                                 totalProducts = { order.totalProducts }

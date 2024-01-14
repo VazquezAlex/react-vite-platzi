@@ -1,5 +1,5 @@
 // Third-party imports.
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 
 // Local imports.
@@ -13,6 +13,11 @@ const MyOrder = () => {
         orders,
     } = useShopiContext();
 
+    const { id } = useParams();
+    
+    let index = id;
+    if (id === 'last') index = orders?.length - 1;
+
     return (
         <Layout>
             <div className = "flex items-center justify-center w-80 relative mb-6">
@@ -23,7 +28,7 @@ const MyOrder = () => {
             </div>
             <div className = 'flex flex-col w-80'>
                 {
-                    orders.length > 0 && orders.slice(-1)[0].products.map(product => (
+                    orders.length > 0 && orders[index]?.products.map(product => (
                         <OrderCard
                             key = { product.id }
                             title = { product.title }
