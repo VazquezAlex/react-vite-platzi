@@ -10,11 +10,25 @@ const Card = ({ data }) => {
 
     const { category, image, title, price } = data;
 
-    const { openProductDetail, setCartProducts, setProductToShow } = useShopiContext();
+    const { 
+        closeProductDetail,
+        openProductDetail, 
+        openShoppingCart, 
+        setCartProducts, 
+        setProductToShow 
+    } = useShopiContext();
 
     const showProduct = () => {
         openProductDetail();
         setProductToShow(data);
+    }
+    
+    const addProductsToCart = (event) => {
+        event.stopPropagation();
+
+        setCartProducts(prev => [...prev, data]);
+        closeProductDetail();
+        openShoppingCart();
     }
 
     return (
@@ -33,7 +47,7 @@ const Card = ({ data }) => {
                 />
                 <div
                     className = "absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
-                    onClick = { () => setCartProducts(prev => [...prev, data]) }
+                    onClick = { addProductsToCart }
                 >
                     <PlusIcon className = 'h-6 w-6 text-black' />
                 </div>

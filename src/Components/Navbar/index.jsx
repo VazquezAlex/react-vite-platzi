@@ -4,10 +4,11 @@ import { ShoppingBagIcon } from '@heroicons/react/24/solid';
 
 // Local imports.
 import { useShopiContext } from "../../Context";
+import CheckoutSideMenu from "../CheckoutSideMenu";
 
 const Navbar = () => {
 
-    const { cartProducts } = useShopiContext();
+    const { cartProducts, openShoppingCart } = useShopiContext();
 
     const activeStyle = 'underline underline-offset-4';
 
@@ -98,10 +99,14 @@ const Navbar = () => {
                         Sign In
                     </NavLink>
                 </li>
-                <li className = "flex items-center gap-x-1">
+                <li 
+                    className = "flex items-center gap-x-1 cursor-pointer hover:opacity-50"
+                    onClick = { openShoppingCart }
+                >
                     <ShoppingBagIcon className = "h-6 w-6 text-black" /> { cartProducts.length }
                 </li>
             </ul>
+            <CheckoutSideMenu />
         </nav>
     );
 }

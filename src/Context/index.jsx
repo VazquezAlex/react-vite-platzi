@@ -23,13 +23,21 @@ export const ShoppingCartProvider = ({ children }) => {
     // Shopping Cart - Add Products to cart.
     const [cartProducts, setCartProducts] = useState([]);
 
+    // Checkout Side Menu - Open / Close.
+    const [isShoppingCartOpen, setIsShoppingCartOpen] = useState(false);
+    const openShoppingCart = () => setIsShoppingCartOpen(true);    
+    const closeShoppingCart = () => setIsShoppingCartOpen(false);
+
     const values = {
         cartProducts,
         count,
         isProductDetailOpen,
+        isShoppingCartOpen,
         productToShow,
         closeProductDetail,
+        closeShoppingCart,
         openProductDetail,
+        openShoppingCart,
         setCartProducts,
         setCount,
         setProductToShow,

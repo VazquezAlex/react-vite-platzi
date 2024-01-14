@@ -3,8 +3,8 @@
 import { XMarkIcon } from '@heroicons/react/24/solid';
 
 // Local imports.
-import './styles.css';
 import { useShopiContext } from '../../Context';
+import './styles.css';
 
 const ProductDetail = () => {
 
